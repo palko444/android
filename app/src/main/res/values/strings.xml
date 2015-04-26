@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Cicovec</string>
+
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="show_location">Show location</string>
+    <string name="action_settings">Settings</string>
+</resources>
