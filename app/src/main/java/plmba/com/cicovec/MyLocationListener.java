@@ -17,6 +17,7 @@ public class MyLocationListener extends Activity implements LocationListener {
     LocationManager locationManager;
     Location location;
     TextView text;
+    int count = 1;
 
     public MyLocationListener (Location location, TextView text) {
         this.location = location;
@@ -26,7 +27,8 @@ public class MyLocationListener extends Activity implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        text.setText("Lat: " + location.getLatitude() + "\nLon: " + location.getLongitude());
+        text.setText("Lat: " + location.getLatitude() + "\nLon: " + location.getLongitude() + "\n count: " + count);
+        count++;
 
 
     }
