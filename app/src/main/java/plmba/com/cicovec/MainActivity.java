@@ -1,24 +1,24 @@
 package plmba.com.cicovec;
 
 import android.app.Activity;
-import android.content.Context;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
 
 
     TextView text;
+    TextView text_oo;
     Button btnShowLocation;
+    Button on_off;
     ShowGPS gps;
+    LocationListener locationListener;
+    LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +43,30 @@ public class MainActivity extends Activity {
                 } else {
                     gps.showSettingsAlert();
                 }
-
             }
         });
+
+        on_off = (Button) findViewById(R.id.on_off);
+
+        on_off.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick (View view) {
+                gps = new ShowGPS(MainActivity.this);
+                text_oo = (TextView) findViewById(R.id.text_permanent);
+
+                if (gps.canGetLocation()) {
+                    gps = new ShowGPS(MainActivity.this);
+                    LocationListener locationListener = new MyLocationListener(gps.location,text_oo);
+                    locationManager = gps.locationManager;
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,locationListener);
+                } else {
+                    gps.showSettingsAlert();
+                }
+            }
+        });
+
+
 
     }
 
