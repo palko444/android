@@ -9,29 +9,42 @@
 
     <TextView
         android:id="@+id/text"
-        android:text="@string/show_location"
+        android:text="@string/show_location_ot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/text_permanent"
-        android:text="@string/show_location"
+        android:id="@+id/text_permanent_nw"
+        android:text="@string/show_location_nw"
         android:layout_width="wrap_content"
         android:layout_marginTop="175dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/text_permanent_gps"
+        android:text="@string/show_location_gps"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="340dp"
         android:layout_height="wrap_content" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/show_location"
-        android:id="@+id/show_location"
+        android:text="@string/on_of_ot"
+        android:id="@+id/on_off_ot"
         android:layout_marginTop="88dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/on_of"
+        android:text="@string/on_of_nw"
         android:layout_marginTop="250dp"
-        android:id="@+id/on_off"/>
+        android:id="@+id/on_off_nw"/>
+
+     <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/on_of_gps"
+        android:layout_marginTop="410dp"
+        android:id="@+id/on_off_gps"/>
 
 </RelativeLayout>

@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Cicovec</string>
 
-    <string name="show_location">Show location</string>
-    <string name="on_of">on Biatch</string>
+    <string name="show_location_ot">Show one time location</string>
+    <string name="show_location_gps">Show GPS location</string>
+    <string name="show_location_nw">Show NW location</string>
+    <string name="on_of_nw">on Biatch NW</string>
+    <string name="on_of_gps">on Biatch GPS</string>
+    <string name="on_of_ot">Biatch ot</string>
     <string name="action_settings">Settings</string>
 </resources>

@@ -13,9 +13,11 @@ public class MainActivity extends Activity {
 
 
     TextView text;
-    TextView text_oo;
+    TextView text_oo_nw;
+    TextView text_oo_gps;
     Button btnShowLocation;
     Button on_off;
+    Button on_off_gps;
     ShowGPS gps;
     LocationListener locationListener;
     LocationManager locationManager;
@@ -25,8 +27,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnShowLocation = (Button) findViewById(R.id.show_location);
+        btnShowLocation = (Button) findViewById(R.id.on_off_ot);
+        on_off_gps = (Button) findViewById(R.id.on_off_gps);
+        on_off = (Button) findViewById(R.id.on_off_nw);
         text = (TextView) findViewById(R.id.text);
+        text_oo_nw = (TextView) findViewById(R.id.text_permanent_nw);
+        text_oo_gps = (TextView) findViewById(R.id.text_permanent_gps);
 
         btnShowLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,18 +52,14 @@ public class MainActivity extends Activity {
             }
         });
 
-        on_off = (Button) findViewById(R.id.on_off);
-
         on_off.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick (View view) {
                 gps = new ShowGPS(MainActivity.this);
-                text_oo = (TextView) findViewById(R.id.text_permanent);
 
                 if (gps.canGetLocation()) {
-                    gps = new ShowGPS(MainActivity.this);
-                    LocationListener locationListener = new MyLocationListener(gps.location,text_oo);
+                    LocationListener locationListener = new MyLocationListener(gps.location, text_oo_nw);
                     locationManager = gps.locationManager;
                     locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,locationListener);
                 } else {
@@ -66,9 +68,23 @@ public class MainActivity extends Activity {
             }
         });
 
+        on_off_gps.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick (View view) {
+                gps = new ShowGPS(MainActivity.this);
+
+                if (gps.canGetLocation()) {
+                    LocationListener locationListener = new MyLocationListener(gps.location,text_oo_gps);
+                    locationManager = gps.locationManager;
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
+                } else {
+                    gps.showSettingsAlert();
+                }
+            }
+        });
 
 
     }
-
 
 }
